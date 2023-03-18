@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <style>
+      #list {
+        font-family: "Apple Symbols";
+        color: yellow;
+        margin-left: 7px;
+      }
+      .list {
+        background-color: dodgerblue;
+        width: 50px;
+        height: 25px;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body>
+<a href="/books/new">Add new book</a><br><br>
+<a href="/people">To people</a>
+<div id="list">
+  <h2 class="list"> List: </h2>
+</div>
+  <div th:each="book : ${books}">
+      <p th:text="${book.getId()} + ': ' + ${book.getName()}"/>
+      <a th:href="@{/books/{id}(id=${book.getId()})}">Details</a>
+      <hr>
+  </div>
+</body>
+</html>

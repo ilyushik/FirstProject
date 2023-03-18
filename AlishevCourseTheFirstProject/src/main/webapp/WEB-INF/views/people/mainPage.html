@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+  <style>
+    #list {
+      font-family: "Apple Symbols";
+      color: yellow;
+      margin-left: 7px;
+    }
+    .list {
+      background-color: dodgerblue;
+      width: 50px;
+      height: 25px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+<a href="/people/new">Add new person</a><br><br>
+<a href="/books">To books</a>
+  <div class="list">
+    <h2 id="list">List: </h2>
+  </div>
+    <form>
+        <div th:each="person : ${people}">
+            <p th:text="${person.getId()} + ': ' + ${person.getName()}"></p>
+            <a th:href="@{/people/{id}(id=${person.getId()})}">Details</a>
+            <hr>
+        </div>
+    </form>
+</body>
+</html>
